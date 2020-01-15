@@ -55,7 +55,6 @@ const verticals = Array(cells)
 const horizontals = Array(cells - 1)
 	.fill(null)
 	.map(() => Array(cells).fill(false));
-console.log(grid);
 
 //generate the starting row cell for the maze
 const startRow = Math.floor(Math.random() * cells);
@@ -66,10 +65,26 @@ const startColumn = Math.floor(Math.random() * cells);
 //and create maze.  Pass in some row and column that we want to visit
 //inside of our grid.
 const stepThroughCell = (row, column) => {
-	//If I have visited the cell at [row, column], then return
+	//If I have visited the cell at [row, column], then return.
+	//This is the same as writing if(grid[row][column] === true)
+	//then return
+	if (grid[row][column]) {
+		return;
+	}
 	//Mark this cell as being visited by updating the appropriate
 	//element inside the grid array to show as true
+	grid[row][column] = true;
 	//Assemble randomonly ordered list of cell neighbors
+	//declare neighbors as an array and list out, in row/column
+	//notation, the coordinates of the neighbors around a cell,
+	//starting at the top and going clockwise
+	const neighbors = [
+		[ row - 1, column ],
+		[ row, column + 1 ],
+		[ row + 1, column ],
+		[ row, column - 1 ]
+	];
+
 	//For each neighbor...
 	//See if that neighbor is out of bounds
 	//See if we have visited that neighbor, if so, then continue to
