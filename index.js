@@ -56,3 +56,29 @@ const horizontals = Array(cells - 1)
 	.fill(null)
 	.map(() => Array(cells).fill(false));
 console.log(grid);
+
+//generate the starting row cell for the maze
+const startRow = Math.floor(Math.random() * cells);
+//do the same thing to generate starting column cell for maze
+const startColumn = Math.floor(Math.random() * cells);
+
+//declare a function that will go through the maze creation logic
+//and create maze.  Pass in some row and column that we want to visit
+//inside of our grid.
+const stepThroughCell = (row, column) => {
+	//If I have visited the cell at [row, column], then return
+	//Mark this cell as being visited by updating the appropriate
+	//element inside the grid array to show as true
+	//Assemble randomonly ordered list of cell neighbors
+	//For each neighbor...
+	//See if that neighbor is out of bounds
+	//See if we have visited that neighbor, if so, then continue to
+	//next neighbor
+	//Remove a wall from the horizontals or verticals arrays
+	//Visit that next cell: call stepThroughCell again and pass
+	//in the row and column of the cell we are trying to visit
+};
+
+//call stepThroughCell and pass in startRow and startColumn to
+//begin maze generation
+stepThroughCell(startRow, startColumn);
