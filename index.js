@@ -1,6 +1,9 @@
 //boiler plate to access the objects in matter.js
 const { Engine, Render, Runner, World, Bodies } = Matter;
-
+//set a variable for the # of cells on either the
+//horizontal or vertical side/edge of the maze.  The
+//size can be changed, but it will remain a square
+const cells = 3;
 //size of canvas element
 const width = 600;
 const height = 600;
@@ -40,12 +43,16 @@ World.add(world, walls);
 //a place holder for map().  Map replaces each of the three
 //null values with an array of 3 false values.  Rows are created
 //with the first instance of Array() and columns with the second.
-const grid = Array(3).fill(null).map(() => Array(3).fill(false));
+const grid = Array(cells).fill(null).map(() => Array(cells).fill(false));
 //verticals is going to have three rows(for now) so the outer array
 //should be passed a 3 while the inner array() should be passed
 //two since there are only two columns
-const verticals = Array(3).fill(null).map(() => Array(2).fill(false));
+const verticals = Array(cells)
+	.fill(null)
+	.map(() => Array(cells - 1).fill(false));
 //Outer array will have 2 because there are only 2 rows, while the
 //inner will have 3, for the 3 columns
-const horizontals = Array(2).fill(null).map(() => Array(3).fill(false));
-console.log(horizontals);
+const horizontals = Array(cells - 1)
+	.fill(null)
+	.map(() => Array(cells).fill(false));
+console.log(grid);
