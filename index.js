@@ -36,8 +36,32 @@ const walls = [
 ];
 World.add(world, walls);
 
-//Maze generation
-//using built in Array creation method and fill method
+//MAZE GENERATION
+
+//helper function to randomize the list of a cells neighbors
+//(that list generated in stepThroughCell).  It will take
+//an array and then radomly re-order the elements inside of it
+const shuffle = (arr) => {
+	//get the length of the array and assign it to counter
+	let counter = arr.length;
+	//set up while loop that will run while counter is > 0
+	while (counter > 0) {
+		//get a random index from inside the array
+		const index = Math.floor(Math.random() * counter);
+		//then decrease counter variable by 1
+		counter--;
+		//swap element that is at index of index with the element
+		//that is at the index of counter. this ensures that each
+		//element will be swapped at least one time
+		const temp = arr[counter];
+		arr[counter] = arr[index];
+		arr[index] = temp;
+	}
+	//return the now randomly ordered array
+	return arr;
+};
+
+//Create the grid using built in Array creation method and fill method
 //the argument passed into Array(), is the # of colums/rows
 //it doesn't matter what you pass into fill as it is just
 //a place holder for map().  Map replaces each of the three
@@ -77,14 +101,15 @@ const stepThroughCell = (row, column) => {
 	//Assemble randomonly ordered list of cell neighbors
 	//declare neighbors as an array and list out, in row/column
 	//notation, the coordinates of the neighbors around a cell,
-	//starting at the top and going clockwise
-	const neighbors = [
+	//starting at the top and going clockwise.  wrap the function
+	//in shuffle helper function to randomize the order of
+	//the neighbors
+	const neighbors = shuffle([
 		[ row - 1, column ],
 		[ row, column + 1 ],
 		[ row + 1, column ],
 		[ row, column - 1 ]
-	];
-
+	]);
 	//For each neighbor...
 	//See if that neighbor is out of bounds
 	//See if we have visited that neighbor, if so, then continue to
