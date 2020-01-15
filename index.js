@@ -33,17 +33,12 @@ const walls = [
 ];
 World.add(world, walls);
 
-//Maze generation, starting with a blank array and using a double nested
-//for loop
-const grid = [];
-
-for (let i = 0; i < 3; i++) {
-	//in outerloop,push in each individual row
-	grid.push([]);
-	//in the inner loop, process all the rows and
-	//add in starting values of false
-	for (let j = 0; j < 3; j++) {
-		grid[i].push(false);
-	}
-}
+//Maze generation
+//using built in Array creation method and fill method
+//the argument passed into Array(), is the # of colums/rows
+//it doesn't matter what you pass into fill as it is just
+//a place holder for map().  Map replaces each of the three
+//null values with an array of 3 false values.  Rows are created
+//with the first instance of Array() and columns with the second.
+const grid = Array(3).fill(null).map(() => Array(3).fill(false));
 console.log(grid);
