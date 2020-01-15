@@ -41,4 +41,11 @@ World.add(world, walls);
 //null values with an array of 3 false values.  Rows are created
 //with the first instance of Array() and columns with the second.
 const grid = Array(3).fill(null).map(() => Array(3).fill(false));
-console.log(grid);
+//verticals is going to have three rows(for now) so the outer array
+//should be passed a 3 while the inner array() should be passed
+//two since there are only two columns
+const verticals = Array(3).fill(null).map(() => Array(2).fill(false));
+//Outer array will have 2 because there are only 2 rows, while the
+//inner will have 3, for the 3 columns
+const horizontals = Array(2).fill(null).map(() => Array(3).fill(false));
+console.log(horizontals);
