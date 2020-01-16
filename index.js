@@ -103,12 +103,14 @@ const stepThroughCell = (row, column) => {
 	//notation, the coordinates of the neighbors around a cell,
 	//starting at the top and going clockwise.  wrap the function
 	//in shuffle helper function to randomize the order of
-	//the neighbors
+	//the neighbors.  added third element to each array to indicate
+	//direction so that it can be referenced in 'for neighbor of
+	//neigbors loop below'
 	const neighbors = shuffle([
-		[ row - 1, column ],
-		[ row, column + 1 ],
-		[ row + 1, column ],
-		[ row, column - 1 ]
+		[ row - 1, column, 'up' ],
+		[ row, column + 1, 'right' ],
+		[ row + 1, column, 'down' ],
+		[ row, column - 1, 'left' ]
 	]);
 	//For each neighbor...Check condition: neighbor is out of bounds
 	//check condition: if neighbor visited previously, and if so,
@@ -145,7 +147,9 @@ const stepThroughCell = (row, column) => {
 		//on the direction we're heading, update either the verticals
 		//or horizontals array to remove the wall.  Up or down means
 		//updating the horizontals array and L or R means updating
-		//verticals array
+		//verticals array. To know direction, add a third element to
+		//each array in neighbors to indicate direction so that can
+		//be referenced here
 	}
 	//Visit that next cell: call stepThroughCell again and pass
 	//in the row and column of the cell we are trying to visit
