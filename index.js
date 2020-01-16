@@ -110,11 +110,43 @@ const stepThroughCell = (row, column) => {
 		[ row + 1, column ],
 		[ row, column - 1 ]
 	]);
-	//For each neighbor...
-	//See if that neighbor is out of bounds
-	//See if we have visited that neighbor, if so, then continue to
-	//next neighbor
-	//Remove a wall from the horizontals or verticals arrays
+	//For each neighbor...Check condition: neighbor is out of bounds
+	//check condition: if neighbor visited previously, and if so,
+	// move to next neighbor
+	//Remove wall from horizontal or verticals array
+	//First loop over neighbor cells:
+	for (let neighbor of neighbors) {
+		//access neighbors and pull a couple values out using Array
+		//destructuring
+		const [ nextRow, nextColumn ] = neighbor;
+		//see if neighbor is out of bounds.  If we have a neighbor where
+		//any of these conditions is true, then we still want to iterate
+		//through the rest of the neighbors, but we don't want to run
+		//any additional code on this particular out of bounds neighbor
+		//use the "continue" keyword for this condition.  This tells JS
+		//"don't leave this for loop, but don't take any additional action
+		//on the current iteration of the loop. Instead, just move on to
+		//the next neighbor pair now"
+		if (
+			nextRow < 0 ||
+			nextRow >= cells ||
+			nextColumn < 0 ||
+			nextColumn >= cells
+		) {
+			continue;
+		}
+		//if grid (where we're storing boolean values to represent 'visited'
+		//or not) is true for this neighbor cell, then don't do anything
+		//with this cell and move on to the next neighbor pair now
+		if (grid[nextRow][nextColumn]) {
+			continue;
+		}
+		//decide if we are moving up, down, left or right, and depending
+		//on the direction we're heading, update either the verticals
+		//or horizontals array to remove the wall.  Up or down means
+		//updating the horizontals array and L or R means updating
+		//verticals array
+	}
 	//Visit that next cell: call stepThroughCell again and pass
 	//in the row and column of the cell we are trying to visit
 };
