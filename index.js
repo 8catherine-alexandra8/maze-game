@@ -163,6 +163,7 @@ const stepThroughCell = (row, column) => {
 		} else if (direction === 'down') {
 			horizontals[row][column] = true;
 		}
+		stepThroughCell(nextRow, nextColumn);
 	}
 	//Visit that next cell: call stepThroughCell again and pass
 	//in the row and column of the cell we are trying to visit
@@ -171,3 +172,24 @@ const stepThroughCell = (row, column) => {
 //call stepThroughCell and pass in startRow and startColumn to
 //begin maze generation
 stepThroughCell(startRow, startColumn);
+
+//Iterate over horizontals array, generated above, to figure out
+//where false values are, and use them to draw rectangles (build walls)
+//horizontals is a 2d array, so when we do a forEach on it, we will
+//receive the inner arrays.  We'll call it each inner array "row"
+//then iterate over each row with another forEach
+horizontals.forEach((row) => {
+	//for each row, we'll receive each boolean value as an arguement
+	//called open, to represent if this is an open segment of wall
+	//or not. if open is true, we don't need to draw a rectangle/wall
+	row.forEach((open) => {
+		//if open is true, then move on to the next element in the array
+		if (open === true) {
+			return;
+		}
+		//create a wall variable to draw walls using the correct
+		//arguments for rectangle, so that we draw the correct
+		//side of the rectangle
+		const wall = Bodies.rectangle();
+	});
+});
