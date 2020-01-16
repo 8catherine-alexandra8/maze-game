@@ -150,6 +150,19 @@ const stepThroughCell = (row, column) => {
 		//verticals array. To know direction, add a third element to
 		//each array in neighbors to indicate direction so that can
 		//be referenced here
+		//if moving left or right, updating appropriate array index
+		//to true which will remove wall:
+		if (direction === 'left') {
+			verticals[row][column - 1] = true;
+		} else if (direction === 'right') {
+			verticals[row][column] = true;
+		} else if (direction === 'up') {
+			//if moving up or down, updating array appropriate array index
+			//to true to remove wall:
+			horizontals[row - 1][column] = true;
+		} else if (direction === 'down') {
+			horizontals[row][column] = true;
+		}
 	}
 	//Visit that next cell: call stepThroughCell again and pass
 	//in the row and column of the cell we are trying to visit
