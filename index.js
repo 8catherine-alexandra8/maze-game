@@ -8,6 +8,9 @@ const cells = 3;
 const width = 600;
 const height = 600;
 
+//set unit length variable as width/cells
+const unitLength = width / cells;
+
 //more boiler plate to create and gain access to
 //matter js objects-more detailed explanation
 //in Bear notes
@@ -177,12 +180,14 @@ stepThroughCell(startRow, startColumn);
 //where false values are, and use them to draw rectangles (build walls)
 //horizontals is a 2d array, so when we do a forEach on it, we will
 //receive the inner arrays.  We'll call it each inner array "row"
-//then iterate over each row with another forEach
-horizontals.forEach((row) => {
+//then iterate over each row with another forEach. the second
+//argument would be the index of the row
+horizontals.forEach((row, rowIndex) => {
 	//for each row, we'll receive each boolean value as an arguement
 	//called open, to represent if this is an open segment of wall
 	//or not. if open is true, we don't need to draw a rectangle/wall
-	row.forEach((open) => {
+	//the second argument here will be columnIndex
+	row.forEach((open, columnIndex) => {
 		//if open is true, then move on to the next element in the array
 		if (open === true) {
 			return;
@@ -190,6 +195,20 @@ horizontals.forEach((row) => {
 		//create a wall variable to draw walls using the correct
 		//arguments for rectangle, so that we draw the correct
 		//side of the rectangle
-		const wall = Bodies.rectangle();
+		const wall = Bodies.rectangle(
+			//placement along x axis:
+			columnIndex * unitLength + unitLength / 2,
+			//placement along y axis:
+			rowIndex * unitLength + unitLength,
+			//define how wide and how tall the rectangle
+			//should be
+			unitLength,
+			//wall height is somewhat arbitrary.  Needs to be short
+			//enough for ball to navigate around
+			10,
+			{ isStatic: true }
+		);
+		//add wall to world
+		World.add(world, wall);
 	});
 });
