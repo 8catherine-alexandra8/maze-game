@@ -7,7 +7,7 @@ const { Engine, Render, Runner, World, Bodies, Body, Events } = Matter;
 //set a variable for the # of cells on either the
 //horizontal or vertical side/edge of the maze.  The
 //size can be changed, but it will remain a square
-const cells = 20;
+const cells = 3;
 //size of canvas element
 const width = 600;
 const height = 600;
@@ -252,12 +252,14 @@ const goal = Bodies.rectangle(
 	//height of rectangle, scalable with unitLength
 	unitLength * 0.7,
 	//width of rectangle, scaleable
-    unitLength * 0.7,
-    //add in an options object to give goal a custom name
-    //that can be used to detect when the ball hits the goal
-    //this will distinguish from when ball hits rectangle walls
-	{ label: 'goal',
-        isStatic: true }
+	unitLength * 0.7,
+	//add in an options object to give goal a custom name
+	//that can be used to detect when the ball hits the goal
+	//this will distinguish from when ball hits rectangle walls
+	{
+		label    : 'goal',
+		isStatic : true
+	}
 );
 //make goal visible in world
 World.add(world, goal);
@@ -272,12 +274,12 @@ const ball = Bodies.circle(
 	//y coordinate for center of circle placement in cell
 	unitLength / 2,
 	//radius of ball
-    unitLength / 4,
-    //add in an options object to give ball a custom name
-    //that can be used to detect when the ball hits the goal
-    {
-     label: 'ball'   
-    }
+	unitLength / 4,
+	//add in an options object to give ball a custom name
+	//that can be used to detect when the ball hits the goal
+	{
+		label : 'ball'
+	}
 );
 //make ball visible in the world
 World.add(world, ball);
@@ -317,8 +319,17 @@ document.addEventListener('keydown', (event) => {
 //WIN CONDITION
 
 //Utilize events object, destructured from Matter, to listen
-//for a collision event, add a callback function that will 
+//for a collision event, add a callback function that will
 //be called with an event object.  It will be invoked upon collision
-Events.on(engine, 'collisionStart', event => {
+Events.on(engine, 'collisionStart', (event) => {
+	event.pairs.forEach((collision) => {
+		const labels = [ 'ball', 'goal' ];
 
-} )
+		if (
+			labels.includes(collision.bodyA.label) &&
+			labels.includes(collision.bodyB.label)
+		) {
+			console.log('You won!');
+		}
+	});
+});
