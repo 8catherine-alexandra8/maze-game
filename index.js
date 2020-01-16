@@ -214,7 +214,13 @@ horizontals.forEach((row, rowIndex) => {
 			//wall height is somewhat arbitrary.  Needs to be short
 			//enough for ball to navigate around
 			10,
-			{ isStatic: true }
+			//add a label of wall to properties object so that it
+			//can be referenced in win condition, to flip isStatic,
+			//false
+			{
+				label    : 'wall',
+				isStatic : true
+			}
 		);
 		//add wall to world
 		World.add(world, wall);
@@ -234,7 +240,13 @@ verticals.forEach((row, rowIndex) => {
 			rowIndex * unitLength + unitLength / 2,
 			10,
 			unitLength,
-			{ isStatic: true }
+			//add a label of wall to properties object so that it
+			//can be referenced in win condition, to flip isStatic,
+			//false
+			{
+				label    : 'wall',
+				isStatic : true
+			}
 		);
 		World.add(world, wall);
 	});
@@ -329,7 +341,19 @@ Events.on(engine, 'collisionStart', (event) => {
 			labels.includes(collision.bodyA.label) &&
 			labels.includes(collision.bodyB.label)
 		) {
-			console.log('You won!');
+			//at this point, the user won. to indicate this
+			//we will turn gravity back on. this will cause shapes
+			//to fall toward bottom of canvas
+			world.gravity.y = 1;
+			//loop over all the shapes, determine which ones are labeled
+			//'wall' and remove static flag from each.  label is set
+			//on both horizontals and verticals.
+			//of them so that they can fall in response to gravity
+			world.bodies.forEach((body) => {
+				if (body.label === 'wall') {
+					Body.setStatic(body, false);
+				}
+			});
 		}
 	});
 });
