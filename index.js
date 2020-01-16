@@ -194,7 +194,7 @@ horizontals.forEach((row, rowIndex) => {
 		}
 		//create a wall variable to draw walls using the correct
 		//arguments for rectangle, so that we draw the correct
-		//side of the rectangle
+		//side of the rectangle, if above coindtion not met.
 		const wall = Bodies.rectangle(
 			//placement along x axis:
 			columnIndex * unitLength + unitLength / 2,
@@ -209,6 +209,25 @@ horizontals.forEach((row, rowIndex) => {
 			{ isStatic: true }
 		);
 		//add wall to world
+		World.add(world, wall);
+	});
+});
+//repeat same logic for vertical wall creation as was used above
+//for horizontal wall creation
+verticals.forEach((row, rowIndex) => {
+	row.forEach((open, columnIndex) => {
+		if (open) {
+			return;
+		}
+		//math for wall creation will be a bit different
+		//for verticals than it was for horizontals
+		const wall = Bodies.rectangle(
+			columnIndex * unitLength + unitLength,
+			rowIndex * unitLength + unitLength / 2,
+			10,
+			unitLength,
+			{ isStatic: true }
+		);
 		World.add(world, wall);
 	});
 });
