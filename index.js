@@ -118,9 +118,9 @@ const stepThroughCell = (row, column) => {
 	//Remove wall from horizontal or verticals array
 	//First loop over neighbor cells:
 	for (let neighbor of neighbors) {
-		//access neighbors and pull a couple values out using Array
+		//access neighbors and pull a few values out using Array
 		//destructuring
-		const [ nextRow, nextColumn ] = neighbor;
+		const [ nextRow, nextColumn, direction ] = neighbor;
 		//see if neighbor is out of bounds.  If we have a neighbor where
 		//any of these conditions is true, then we still want to iterate
 		//through the rest of the neighbors, but we don't want to run
