@@ -1,9 +1,11 @@
 //boiler plate to access the objects in matter.js
-const { Engine, Render, Runner, World, Bodies } = Matter;
+//add Body to list of objects to destructure as this
+//is needed to change the velocity of the ball
+const { Engine, Render, Runner, World, Bodies, Body } = Matter;
 //set a variable for the # of cells on either the
 //horizontal or vertical side/edge of the maze.  The
 //size can be changed, but it will remain a square
-const cells = 3;
+const cells = 20;
 //size of canvas element
 const width = 600;
 const height = 600;
@@ -255,13 +257,31 @@ World.add(world, goal);
 
 //declare a ball and pass in arguments to place in
 //in the correct spot
-const ball = Bodies.circel(
+const ball = Bodies.circle(
 	//x coordinate for center of circle
 	unitLength / 2,
 	//y coordinate for center of circle placement in cell
 	unitLength / 2,
-	//diameter of ball
-	unitLength / 2
+	//radius of ball
+	unitLength / 4
 );
 //make ball visible in the world
 World.add(world, ball);
+
+//event listener to detect key depression and receive event
+//object
+document.addEventListener('keydown', (event) => {
+	//add condition for if user presses W to go up
+	//87 is w's keycode
+	if (event.keyCode === 87) {
+	}
+	//move right/press d
+	if (event.keyCode === 68) {
+	}
+	//move down/ press s
+	if (event.keyCode === 83) {
+	}
+	//move left/ press a
+	if (event.keyCode === 65) {
+	}
+});
