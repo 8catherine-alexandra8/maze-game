@@ -250,3 +250,18 @@ const goal = Bodies.rectangle(
 );
 //make goal visible in world
 World.add(world, goal);
+
+//BALL CREATION
+
+//declare a ball and pass in arguments to place in
+//in the correct spot
+const ball = Bodies.circel(
+	//x coordinate for center of circle
+	unitLength / 2,
+	//y coordinate for center of circle placement in cell
+	unitLength / 2,
+	//diameter of ball
+	unitLength / 2
+);
+//make ball visible in the world
+World.add(world, ball);
