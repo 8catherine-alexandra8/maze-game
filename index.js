@@ -17,6 +17,9 @@ const unitLength = width / cells;
 //matter js objects-more detailed explanation
 //in Bear notes
 const engine = Engine.create();
+//disable gravity in the world to make it easier
+//to move the ball around the maze
+engine.world.gravity.y = 0;
 const { world } = engine;
 const render = Render.create({
 	element : document.body,
