@@ -271,17 +271,31 @@ World.add(world, ball);
 //event listener to detect key depression and receive event
 //object
 document.addEventListener('keydown', (event) => {
+	//get current velocity of ball, using destructuring
+	//when the ball isn't moving, x and y will be 0
+	const { x, y } = ball.velocity;
 	//add condition for if user presses W to go up
 	//87 is w's keycode
 	if (event.keyCode === 87) {
+		//update the velocity in the up direction. x will be set
+		//to equal current velocity of x since
+		//we don't want to increase velocity
+		//on the x axix. Subtract 5 from y to move up
+		//writing it this way causes ball to continue
+		//to increase speed if W is pressed multiple times
+		//consecutively
+		Body.setVelocity(ball, { x, y: y - 5 });
 	}
 	//move right/press d
 	if (event.keyCode === 68) {
+		Body.setVelocity(ball, { x: x + 5, y });
 	}
 	//move down/ press s
 	if (event.keyCode === 83) {
+		Body.setVelocity(ball, { x, y: y + 5 });
 	}
 	//move left/ press a
 	if (event.keyCode === 65) {
+		Body.setVelocity(ball, { x: x - 5, y });
 	}
 });
