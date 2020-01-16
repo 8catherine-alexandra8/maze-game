@@ -20,7 +20,7 @@ const render = Render.create({
 	element : document.body,
 	engine  : engine,
 	options : {
-		wireframes : false,
+		wireframes : true,
 		width,
 		height
 	}
@@ -231,3 +231,21 @@ verticals.forEach((row, rowIndex) => {
 		World.add(world, wall);
 	});
 });
+
+//GOAL CREATION
+
+//declare a goal and pass in arguments to place it
+//in the correct spot
+const goal = Bodies.rectangle(
+	//x coordinate
+	width - unitLength / 2,
+	//y coordinate
+	height - unitLength / 2,
+	//height of rectangle, scalable with unitLength
+	unitLength * 0.7,
+	//width of rectangle, scaleable
+	unitLength * 0.7,
+	{ isStatic: true }
+);
+//make goal visible in world
+World.add(world, goal);
