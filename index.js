@@ -10,8 +10,8 @@ const { Engine, Render, Runner, World, Bodies, Body, Events } = Matter;
 //const cells = 6;
 //replaced original singular cells variable with x axis cells
 //and y axis cells.  cellsVertical is the # of rows.
-const cellsHorizontal = 12;
-const cellsVertical = 10;
+const cellsHorizontal = 6;
+const cellsVertical = 4;
 //size of canvas element.  Using the innerWidth and innerHeight
 //properties of the window object to make canvas adapt to user's
 //current browser window size
@@ -382,6 +382,7 @@ Events.on(engine, 'collisionStart', (event) => {
 			//adding a winner message by removing display: hidden
 			//from html h1 element
 			document.querySelector('.winner').classList.remove('hidden');
+			document.querySelector('.button').classList.remove('hidden');
 			//at this point, the user won. to indicate this
 			//we will turn gravity back on. this will cause shapes
 			//to fall toward bottom of canvas
