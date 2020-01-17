@@ -273,7 +273,7 @@ verticals.forEach((row, rowIndex) => {
 				isStatic : true,
 				//added render option fill the maze walls with color
 				render   : {
-                    fillStyle: '#DB9E36'
+					fillStyle : '#DB9E36'
 				}
 			}
 		);
@@ -379,6 +379,9 @@ Events.on(engine, 'collisionStart', (event) => {
 			labels.includes(collision.bodyA.label) &&
 			labels.includes(collision.bodyB.label)
 		) {
+			//adding a winner message by removing display: hidden
+			//from html h1 element
+			document.querySelector('.winner').classList.remove('hidden');
 			//at this point, the user won. to indicate this
 			//we will turn gravity back on. this will cause shapes
 			//to fall toward bottom of canvas

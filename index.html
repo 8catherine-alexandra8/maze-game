@@ -6,14 +6,36 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.14.2/matter.min.js"></script>
     <!--Adding style tag here because I don't have a CSS doc and I 
     don't need one for such minimal styling--><!--set body margin to 0 so that canvas will fill user-select
-        user screen completely-->
+        user screen completely--><!--styling for win message -->
     <style>
      body {
         margin: 0;
      }
+        .hidden {
+            display: none !important;
+        }
+        h1 {
+            color: #FFFAD5;
+            font-size: 36px;
+        }
+        .winner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            z-index: 1;
+            height: 100vh;
+            width: 100vw;
+        }
+
     </style>
     </head>
     <body>
+        <!--added message to display when user wins-->
+
+        <div class="winner hidden">
+            <h1>You Win!</h1>
+        </div>
         <script src="index.js"></script>
     </body>
 </html>
