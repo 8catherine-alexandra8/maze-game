@@ -107,10 +107,11 @@ const horizontals = Array(cellsVertical - 1)
 	.fill(null)
 	.map(() => Array(cellsHorizontal).fill(false));
 
-//generate the starting row cell for the maze
-const startRow = Math.floor(Math.random() * cells);
+//generate the starting row cell for the maze. cellsVertical
+//corresponds with rows so cells changes to cellsVertical
+const startRow = Math.floor(Math.random() * cellsVertical);
 //do the same thing to generate starting column cell for maze
-const startColumn = Math.floor(Math.random() * cells);
+const startColumn = Math.floor(Math.random() * cellsHorizontal);
 
 //declare a function that will go through the maze creation logic
 //and create maze.  Pass in some row and column that we want to visit
