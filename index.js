@@ -7,7 +7,7 @@ const { Engine, Render, Runner, World, Bodies, Body, Events } = Matter;
 //set a variable for the # of cells on either the
 //horizontal or vertical side/edge of the maze.  The
 //size can be changed, but it will remain a square
-const cells = 3;
+const cells = 6;
 //size of canvas element
 const width = 600;
 const height = 600;
