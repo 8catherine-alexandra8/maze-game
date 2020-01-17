@@ -20,7 +20,7 @@ const height = window.innerHeight;
 
 //set unit length variable as width/cells
 //const unitLength = width / cells;
-//replaced unitLength with two different calcs for x and  y 
+//replaced unitLength with two different calcs for x and  y
 //axis units
 const unitLengthX = width / cellsHorizontal;
 const unitLengthY = height / cellsVertical;
@@ -36,8 +36,8 @@ const render = Render.create({
 	element : document.body,
 	engine  : engine,
 	options : {
-        //flipped wireframes to false to make it possible
-        //to add color
+		//flipped wireframes to false to make it possible
+		//to add color
 		wireframes : false,
 		width,
 		height
@@ -91,16 +91,18 @@ const shuffle = (arr) => {
 //with the first instance of Array() and columns with the second.
 //const grid = Array(cells).fill(null).map(() => Array(cells).fill(false));
 //Now that grid will be 4 x 3, the outerarray, which is the number
-//of rows in the array needs to reference cellsVertical.  The 
+//of rows in the array needs to reference cellsVertical.  The
 //inner array will be the number of columns, tracked by cellsHorizontal
-const grid = Array(cellsVertical).fill(null).map(() => Array(cellsHorizontal).fill(false));
+const grid = Array(cellsVertical)
+	.fill(null)
+	.map(() => Array(cellsHorizontal).fill(false));
 //verticals is going to have three rows(for now) so the outer array
 //should be passed a 3 while the inner array() should be passed
 //two since there are only two columns.  Outer array here changed
 //cellsVertical
 const verticals = Array(cellsVertical)
-    .fill(null)
-    //inner array changed to cellsHorizontal
+	.fill(null)
+	//inner array changed to cellsHorizontal
 	.map(() => Array(cellsHorizontal - 1).fill(false));
 //Outer array will have 2 because there are only 2 rows, while the
 //inner will have 3, for the 3 columns.  Outer array here changed
@@ -238,7 +240,11 @@ horizontals.forEach((row, rowIndex) => {
 			//false
 			{
 				label    : 'wall',
-				isStatic : true
+				isStatic : true,
+				//added render option fill the maze walls with color
+				render   : {
+					fillStyle : '#DB9E36'
+				}
 			}
 		);
 		//add wall to world
@@ -264,7 +270,11 @@ verticals.forEach((row, rowIndex) => {
 			//false
 			{
 				label    : 'wall',
-				isStatic : true
+				isStatic : true,
+				//added render option fill the maze walls with color
+				render   : {
+                    fillStyle: '#DB9E36'
+				}
 			}
 		);
 		World.add(world, wall);
@@ -289,7 +299,10 @@ const goal = Bodies.rectangle(
 	//this will distinguish from when ball hits rectangle walls
 	{
 		label    : 'goal',
-		isStatic : true
+		isStatic : true,
+		render   : {
+			fillStyle : '#105B63'
+		}
 	}
 );
 //make goal visible in world
@@ -297,7 +310,7 @@ World.add(world, goal);
 
 //BALL CREATION
 //because we replaced unitLength with unitLengthX and unitLengthY
-//we need to add a new variable for ball radius so that we calculate 
+//we need to add a new variable for ball radius so that we calculate
 //radius using the smaller of the two unitLengths
 const ballRadius = Math.min(unitLengthX, unitLengthY) / 4;
 //declare a ball and pass in arguments to place in
@@ -312,7 +325,10 @@ const ball = Bodies.circle(
 	//add in an options object to give ball a custom name
 	//that can be used to detect when the ball hits the goal
 	{
-		label : 'ball'
+		label  : 'ball',
+		render : {
+			fillStyle : '#BD4932'
+		}
 	}
 );
 //make ball visible in the world
