@@ -159,9 +159,9 @@ const stepThroughCell = (row, column) => {
 		//the next neighbor pair now"
 		if (
 			nextRow < 0 ||
-			nextRow >= cells ||
+			nextRow >= cellsVertical ||
 			nextColumn < 0 ||
-			nextColumn >= cells
+			nextColumn >= cellsHorizontal
 		) {
 			continue;
 		}
