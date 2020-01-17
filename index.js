@@ -19,8 +19,11 @@ const width = window.innerWidth;
 const height = window.innerHeight;
 
 //set unit length variable as width/cells
-const unitLength = width / cells;
-
+//const unitLength = width / cells;
+//replaced unitLength with two different calcs for x and  y 
+//axis units
+const unitLengthX = width / cellsHorizontal;
+const unitLengthY = height / cellsVertical;
 //more boiler plate to create and gain access to
 //matter js objects-more detailed explanation
 //in Bear notes
