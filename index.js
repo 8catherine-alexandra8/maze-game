@@ -230,7 +230,7 @@ horizontals.forEach((row, rowIndex) => {
 			unitLengthX,
 			//wall height is somewhat arbitrary.  Needs to be short
 			//enough for ball to navigate around
-			10,
+			5,
 			//add a label of wall to properties object so that it
 			//can be referenced in win condition, to flip isStatic,
 			//false
@@ -253,10 +253,10 @@ verticals.forEach((row, rowIndex) => {
 		//math for wall creation will be a bit different
 		//for verticals than it was for horizontals
 		const wall = Bodies.rectangle(
-			columnIndex * unitLength + unitLength,
-			rowIndex * unitLength + unitLength / 2,
-			10,
-			unitLength,
+			columnIndex * unitLengthX + unitLengthX,
+			rowIndex * unitLengthY + unitLengthY / 2,
+			5,
+			unitLengthY,
 			//add a label of wall to properties object so that it
 			//can be referenced in win condition, to flip isStatic,
 			//false
@@ -275,13 +275,13 @@ verticals.forEach((row, rowIndex) => {
 //in the correct spot
 const goal = Bodies.rectangle(
 	//x coordinate
-	width - unitLength / 2,
+	width - unitLengthX / 2,
 	//y coordinate
-	height - unitLength / 2,
+	height - unitLengthY / 2,
 	//height of rectangle, scalable with unitLength
-	unitLength * 0.7,
+	unitLengthX * 0.7,
 	//width of rectangle, scaleable
-	unitLength * 0.7,
+	unitLengthY * 0.7,
 	//add in an options object to give goal a custom name
 	//that can be used to detect when the ball hits the goal
 	//this will distinguish from when ball hits rectangle walls
