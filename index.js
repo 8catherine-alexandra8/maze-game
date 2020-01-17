@@ -10,7 +10,7 @@ const { Engine, Render, Runner, World, Bodies, Body, Events } = Matter;
 //const cells = 6;
 //replaced original singular cells variable with x axis cells
 //and y axis cells.  cellsVertical is the # of rows.
-const cellsHorizontal = 14;
+const cellsHorizontal = 12;
 const cellsVertical = 10;
 //size of canvas element.  Using the innerWidth and innerHeight
 //properties of the window object to make canvas adapt to user's
