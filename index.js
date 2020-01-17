@@ -399,3 +399,10 @@ Events.on(engine, 'collisionStart', (event) => {
 		}
 	});
 });
+
+//REPLAY CONDITION
+const replayButton = document.querySelector('.button');
+replayButton.addEventListener('click', (event) => {
+    console.log("play again button clicked");
+	location.reload();
+});
