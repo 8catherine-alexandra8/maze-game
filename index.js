@@ -294,16 +294,19 @@ const goal = Bodies.rectangle(
 World.add(world, goal);
 
 //BALL CREATION
-
+//because we replaced unitLength with unitLengthX and unitLengthY
+//we need to add a new variable for ball radius so that we calculate 
+//radius using the smaller of the two unitLengths
+const ballRadius = Math.min(unitLengthX, unitLengthY) / 4;
 //declare a ball and pass in arguments to place in
 //in the correct spot
 const ball = Bodies.circle(
 	//x coordinate for center of circle
-	unitLength / 2,
+	unitLengthX / 2,
 	//y coordinate for center of circle placement in cell
-	unitLength / 2,
+	unitLengthY / 2,
 	//radius of ball
-	unitLength / 4,
+	ballRadius,
 	//add in an options object to give ball a custom name
 	//that can be used to detect when the ball hits the goal
 	{
