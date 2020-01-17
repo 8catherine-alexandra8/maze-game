@@ -7,7 +7,11 @@ const { Engine, Render, Runner, World, Bodies, Body, Events } = Matter;
 //set a variable for the # of cells on either the
 //horizontal or vertical side/edge of the maze.  The
 //size can be changed, but it will remain a square
-const cells = 6;
+//const cells = 6;
+//replaced original singular cells variable with x axis cells
+//and y axis cells
+const cellsHorizontal = 4;
+const cellsVertical = 3;
 //size of canvas element.  Using the innerWidth and innerHeight
 //properties of the window object to make canvas adapt to user's
 //current browser window size
