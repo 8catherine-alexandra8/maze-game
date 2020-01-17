@@ -8,9 +8,11 @@ const { Engine, Render, Runner, World, Bodies, Body, Events } = Matter;
 //horizontal or vertical side/edge of the maze.  The
 //size can be changed, but it will remain a square
 const cells = 6;
-//size of canvas element
-const width = 600;
-const height = 600;
+//size of canvas element.  Using the innerWidth and innerHeight
+//properties of the window object to make canvas adapt to user's
+//current browser window size
+const width = window.innerWidth;
+const height = window.innerHeight;
 
 //set unit length variable as width/cells
 const unitLength = width / cells;
