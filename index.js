@@ -9,7 +9,7 @@ const { Engine, Render, Runner, World, Bodies, Body, Events } = Matter;
 //size can be changed, but it will remain a square
 //const cells = 6;
 //replaced original singular cells variable with x axis cells
-//and y axis cells
+//and y axis cells.  cellsVertical is the # of rows.
 const cellsHorizontal = 4;
 const cellsVertical = 3;
 //size of canvas element.  Using the innerWidth and innerHeight
@@ -87,18 +87,25 @@ const shuffle = (arr) => {
 //a place holder for map().  Map replaces each of the three
 //null values with an array of 3 false values.  Rows are created
 //with the first instance of Array() and columns with the second.
-const grid = Array(cells).fill(null).map(() => Array(cells).fill(false));
+//const grid = Array(cells).fill(null).map(() => Array(cells).fill(false));
+//Now that grid will be 4 x 3, the outerarray, which is the number
+//of rows in the array needs to reference cellsVertical.  The 
+//inner array will be the number of columns, tracked by cellsHorizontal
+const grid = Array(cellsVertical).fill(null).map(() => Array(cellsHorizontal).fill(false));
 //verticals is going to have three rows(for now) so the outer array
 //should be passed a 3 while the inner array() should be passed
-//two since there are only two columns
-const verticals = Array(cells)
-	.fill(null)
-	.map(() => Array(cells - 1).fill(false));
+//two since there are only two columns.  Outer array here changed
+//cellsVertical
+const verticals = Array(cellsVertical)
+    .fill(null)
+    //inner array changed to cellsHorizontal
+	.map(() => Array(cellsHorizontal - 1).fill(false));
 //Outer array will have 2 because there are only 2 rows, while the
-//inner will have 3, for the 3 columns
-const horizontals = Array(cells - 1)
+//inner will have 3, for the 3 columns.  Outer array here changed
+//to cellsVertical and inner array changed to cellsHorizontal
+const horizontals = Array(cellsVertical - 1)
 	.fill(null)
-	.map(() => Array(cells).fill(false));
+	.map(() => Array(cellsHorizontal).fill(false));
 
 //generate the starting row cell for the maze
 const startRow = Math.floor(Math.random() * cells);
