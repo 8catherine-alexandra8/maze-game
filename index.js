@@ -10,8 +10,8 @@ const { Engine, Render, Runner, World, Bodies, Body, Events } = Matter;
 //const cells = 6;
 //replaced original singular cells variable with x axis cells
 //and y axis cells.  cellsVertical is the # of rows.
-const cellsHorizontal = 6;
-const cellsVertical = 4;
+const cellsHorizontal = 10;
+const cellsVertical = 8;
 //size of canvas element.  Using the innerWidth and innerHeight
 //properties of the window object to make canvas adapt to user's
 //current browser window size
@@ -403,6 +403,5 @@ Events.on(engine, 'collisionStart', (event) => {
 //REPLAY CONDITION
 const replayButton = document.querySelector('.button');
 replayButton.addEventListener('click', (event) => {
-    console.log("play again button clicked");
 	location.reload();
 });
