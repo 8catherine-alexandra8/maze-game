@@ -10,8 +10,8 @@ const { Engine, Render, Runner, World, Bodies, Body, Events } = Matter;
 //const cells = 6;
 //replaced original singular cells variable with x axis cells
 //and y axis cells.  cellsVertical is the # of rows.
-const cellsHorizontal = 4;
-const cellsVertical = 3;
+const cellsHorizontal = 14;
+const cellsVertical = 10;
 //size of canvas element.  Using the innerWidth and innerHeight
 //properties of the window object to make canvas adapt to user's
 //current browser window size
@@ -36,7 +36,9 @@ const render = Render.create({
 	element : document.body,
 	engine  : engine,
 	options : {
-		wireframes : true,
+        //flipped wireframes to false to make it possible
+        //to add color
+		wireframes : false,
 		width,
 		height
 	}
