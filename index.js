@@ -222,12 +222,12 @@ horizontals.forEach((row, rowIndex) => {
 		//side of the rectangle, if above coindtion not met.
 		const wall = Bodies.rectangle(
 			//placement along x axis:
-			columnIndex * unitLength + unitLength / 2,
+			columnIndex * unitLengthX + unitLengthX / 2,
 			//placement along y axis:
-			rowIndex * unitLength + unitLength,
-			//define how wide and how tall the rectangle
+			rowIndex * unitLengthY + unitLengthY,
+			//define how wide the rectangle
 			//should be
-			unitLength,
+			unitLengthX,
 			//wall height is somewhat arbitrary.  Needs to be short
 			//enough for ball to navigate around
 			10,
